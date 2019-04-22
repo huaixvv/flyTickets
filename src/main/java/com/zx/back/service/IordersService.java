@@ -1,0 +1,1 @@
+package com.zx.back.service;import com.zx.back.model.Orders;import com.zx.back.model.User;import java.util.List;public interface IordersService {    //查询    public List<Orders> findorders(String uname);    //新增    public void saveOrder(String date, String uid, String fid);    //删除    public void deleteOrder(Integer oid);}

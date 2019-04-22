@@ -1,0 +1,1 @@
+package com.zx.back.service;import com.zx.back.model.User;import java.util.List;public interface IUserService {    public List<User> findAll();    public User findByName(String name);    public int savaOrUpdate(User user);    public void deleteById(String id);}

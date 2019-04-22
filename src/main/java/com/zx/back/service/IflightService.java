@@ -1,0 +1,1 @@
+package com.zx.back.service;import com.zx.back.model.Flight;import java.util.List;public interface IflightService {    public List<Flight> findByAddrTime(String fBegin, String fEnd, String sTime );    public void updateseats(String fid, Integer seatsum);    public Flight selectById(String fid);}

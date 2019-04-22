@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+  <!-- 解决静态资源加载问题   写在DispatcherServlet的前面， 让defaultServlet先拦截 -->
+  <servlet-mapping>
+    <servlet-name >default </servlet-name >
+    <url-pattern >*.js</url-pattern>
+  </servlet-mapping >
+  <servlet-mapping >
+    <servlet-name >default </servlet-name >
+    <url-pattern >*.css</url-pattern>
+  </servlet-mapping >
+  <servlet-mapping >
+    <servlet-name >default </servlet-name >
+    <url-pattern >*.jpg</url-pattern>
+  </servlet-mapping >
+  <servlet-mapping >
+    <servlet-name >default </servlet-name >
+    <url-pattern >*.png</url-pattern>
+  </servlet-mapping >
+
+
+  <!--解决中文乱码-->
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceRequestEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceResponseEncoding</param-name>
+      <param-value>true</param-value>=
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  <servlet>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!-- 3.0的springmvc 默认加载WEB-INF下的dispatcher-servlet.xml文件 3.2的springmvc
+        加载DispatcherServlet-servlet.xml文件 -->
+    <init-param>
+      <!-- 修改默认springmvc加载的配置文件路径 -->
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
+  <!-- spring的配置 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationtContext.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <welcome-file-list>
+    <welcome-file>views/login.jsp</welcome-file>
+  </welcome-file-list>
+
+
+</web-app>
