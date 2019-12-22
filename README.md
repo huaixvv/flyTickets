@@ -1,6 +1,7 @@
 # flyTickets
 航班预订系统 <br>
 软件开发课程设计 <br> 
+png为项目运行的截图
 * 开发环境
   * Java --> SSM + Jsp + MySql
 * SQL文件 
